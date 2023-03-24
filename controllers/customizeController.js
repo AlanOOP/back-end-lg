@@ -1,7 +1,7 @@
   import * as fs from 'fs';
 
   import categoryModel from '../models/categories.js';
-  import customizeModel from '../models/Customize.js';
+  import customizeModel from '../models/customize.js';
   import productModel from '../models/products.js';
   import orderModel from '../models/orders.js';
   import Usuario from '../models/users.js';
