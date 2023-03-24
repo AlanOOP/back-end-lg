@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import conectarDB from './config/db.js';
-import CreateAllFolder from './config/uploadFolder.js';
+// import CreateAllFolder from './config/uploadFolder.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
@@ -16,7 +16,7 @@ import brainTreeRouter from './routes/braintreeRoute.js';
 
 //Crear un Folder 
 
-CreateAllFolder();
+// CreateAllFolder();
 
 const app = express();
 app.use(express.json());
