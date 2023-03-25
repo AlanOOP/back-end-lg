@@ -4,6 +4,7 @@ import conectarDB from './config/db.js';
 // import CreateAllFolder from './config/uploadFolder.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import multer from 'multer';
 
 import usuarioRoutes from './routes/usuarioRoutes.js';
 import authRouter from './routes/authRoutes.js';
@@ -36,6 +37,10 @@ app.use("/api", brainTreeRouter);
 app.use("/api/product", productRouter);
 app.use("/api/order", orderRouter);
 app.use("/api/customize", customizeRouter);
+
+
+
+
 
 app.get('/', (req, res) => {
     res.json({msg : "hola"})

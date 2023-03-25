@@ -14,4 +14,4 @@ router.delete("/delete-user", getDeleteUser);
 router.post("/change-password", changePassword);
 
 
-export default router;
+export default router ;
