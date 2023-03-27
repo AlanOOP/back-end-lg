@@ -18,7 +18,7 @@
   const getOrderByUser = async(req, res) => {
     let { uId } = req.body;
     if (!uId) {
-      return res.json({ message: "All filled must be required" });
+      return res.json({ message: "Campo Requerido" });
     } else {
       try {
         let Order = await orderModel
@@ -45,7 +45,7 @@
       !address ||
       !phone
     ) {
-      return res.json({ message: "All filled must be required" });
+      return res.json({ message: "Campo Requerido" });
     } else {
       try {
         let newOrder = new orderModel({
@@ -58,7 +58,7 @@
         });
         let save = await newOrder.save();
         if (save) {
-          return res.json({ success: "Order created successfully" });
+          return res.json({ success: "Order Creada Correctamente" });
         }
       } catch (err) {
         return res.json({ error: error });
@@ -69,7 +69,7 @@
   const postUpdateOrder = async(req, res) => {
     let { oId, status } = req.body;
     if (!oId || !status) {
-      return res.json({ message: "All filled must be required" });
+      return res.json({ message: "Campo Requerido" });
     } else {
       let currentOrder = orderModel.findByIdAndUpdate(oId, {
         status: status,
@@ -77,7 +77,7 @@
       });
       currentOrder.exec((err, result) => {
         if (err) console.log(err);
-        return res.json({ success: "Order updated successfully" });
+        return res.json({ success: "Order edita correctamente" });
       });
     }
   }
@@ -85,12 +85,12 @@
   const postDeleteOrder = async(req, res) => {
     let { oId } = req.body;
     if (!oId) {
-      return res.json({ error: "All filled must be required" });
+      return res.json({ error: "Campo Requerido" });
     } else {
       try {
         let deleteOrder = await orderModel.findByIdAndDelete(oId);
         if (deleteOrder) {
-          return res.json({ success: "Order deleted successfully" });
+          return res.json({ success: "Orden eliminada Correctamente" });
         }
       } catch (error) {
         console.log(error);

@@ -21,7 +21,7 @@
   const uploadSlideImage =async(req, res) => {
     let image = req.file.filename;
     if (!image) {
-      return res.json({ error: "All field required" });
+      return res.json({ error: "Campo Requerido" });
     }
     try {
       let newCustomzie = new customizeModel({
@@ -29,7 +29,7 @@
       });
       let save = await newCustomzie.save();
       if (save) {
-        return res.json({ success: "Image upload successfully" });
+        return res.json({ success: "La imagen se subio correctamente" });
       }
     } catch (err) {
       console.log(err);
@@ -39,7 +39,7 @@
   const deleteSlideImage =async(req, res) => {
     let { id } = req.body;
     if (!id) {
-      return res.json({ error: "All field required" });
+      return res.json({ error: "Campo Requerido" });
     } else {
       try {
         let deletedSlideImage = await customizeModel.findById(id);
@@ -52,7 +52,7 @@
             if (err) {
               console.log(err);
             }
-            return res.json({ success: "Image deleted successfully" });
+            return res.json({ success: "La imagen se elimino correctamente" });
           });
         }
       } catch (err) {

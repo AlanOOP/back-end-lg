@@ -25,7 +25,7 @@ import * as fs from 'fs';
         if (err) {
           console.log(err);
         }
-        return res.json({ error: "All filled must be required" });
+        return res.json({ error: "Campos Requeridos" });
       });
     } else {
       cName = toTitleCase(cName);
@@ -36,7 +36,7 @@ import * as fs from 'fs';
             if (err) {
               console.log(err);
             }
-            return res.json({ error: "Category already exists" });
+            return res.json({ error: "Categoria Ya existe" });
           });
         } else {
           let newCategory = new categoryModel({
@@ -47,7 +47,7 @@ import * as fs from 'fs';
           });
           await newCategory.save().then((err) => {
             if (!err) {
-              return res.json({ success: "Category created successfully" });
+              return res.json({ success: "Categoria Creada correctamente" });
             }
           });
         }
@@ -60,7 +60,7 @@ import * as fs from 'fs';
   const postEditCategory = async(req, res) => {
     let { cId, cDescription, cStatus } = req.body;
     if (!cId || !cDescription || !cStatus) {
-      return res.json({ error: "All filled must be required" });
+      return res.json({ error: "Campos Requeridos" });
     }
     try {
       let editCategory = categoryModel.findByIdAndUpdate(cId, {
@@ -70,7 +70,7 @@ import * as fs from 'fs';
       });
       let edit = await editCategory.exec();
       if (edit) {
-        return res.json({ success: "Category edit successfully" });
+        return res.json({ success: "Categoria Edita Correctamente" });
       }
     } catch (err) {
       console.log(err);
@@ -80,7 +80,7 @@ import * as fs from 'fs';
   const getDeleteCategory = async(req, res) => {
     let { cId } = req.body;
     if (!cId) {
-      return res.json({ error: "All filled must be required" });
+      return res.json({ error: "Campo Requerido" });
     } else {
       try {
         let deletedCategoryFile = await categoryModel.findById(cId);
@@ -93,7 +93,7 @@ import * as fs from 'fs';
             if (err) {
               console.log(err);
             }
-            return res.json({ success: "Category deleted successfully" });
+            return res.json({ success: "Categoria Eliminada Correctamente" });
           });
         }
       } catch (err) {
