@@ -190,7 +190,7 @@ const buyProduct = async(req, res) =>{
             if( cant > productBuy.pQuantity){
                 return res.json({ err: "No Hay suficiente stock"  , stock : productBuy.pQuantity});
             }
-            productBuy.pQuantity += cant;
+            productBuy.pQuantity -= cant;
             await  productBuy.updateOne({pQuantity : productBuy.pQuantity})      
             return res.json({ success: "Compra correcta" });
 
