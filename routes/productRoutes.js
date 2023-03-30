@@ -14,7 +14,8 @@ import {
     getProductByCategory,
     deleteReview,
     postAddReview,
-    getCartProduct
+    getCartProduct,
+    buyProduct
 } from '../controllers/productoController.js'
 
 const router = express.Router();
@@ -43,5 +44,6 @@ router.post("/single-product", getSingleProduct);
 
 router.post("/add-review", postAddReview);
 router.post("/delete-review", deleteReview);
+router.put("/buyProduct", buyProduct);
 
 export default router;

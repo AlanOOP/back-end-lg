@@ -179,6 +179,21 @@ if (!pId) {
 }
 }
 
+const buyProduct = async(req, res) =>{
+    let { pId , cant} = req.body;
+    if (!pId) {
+        return res.json({ error: "All filled must be required" });
+    } else {
+        try {
+            let productBuy = await productModel.findById(pId);
+            productBuy.pQuantity -= cant;
+            await  productBuy.updateOne({pQuantity : productBuy.pQuantity})
+        } catch (error) {
+            
+        }
+    }
+}
+
 const  getSingleProduct = async(req, res) => {
 let { pId } = req.body;
 if (!pId) {
@@ -356,5 +371,6 @@ export {
     getProductByCategory,
     deleteReview,
     postAddReview,
-    getCartProduct
+    getCartProduct,
+    buyProduct
 };
