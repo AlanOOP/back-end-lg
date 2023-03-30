@@ -181,7 +181,7 @@ if (!pId) {
 
 const buyProduct = async(req, res) =>{
     let { pId , cant} = req.body;
-    if (!pId) {
+    if (!pId || !cant) {
         return res.json({ error: "Campo Requerido" });
     } else {
         try {
