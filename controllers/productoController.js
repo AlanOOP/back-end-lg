@@ -187,7 +187,7 @@ const buyProduct = async(req, res) =>{
         try {
             let productBuy = await productModel.findById(pId);
             
-            if(productBuy.pQuantity < cant){
+            if( cant > productBuy.pQuantity){
                 return res.json({ err: "No Hay suficiente stock"  , stock : productBuy.pQuantity});
             }
             productBuy.pQuantity += cant;
