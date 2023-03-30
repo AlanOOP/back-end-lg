@@ -182,14 +182,20 @@ if (!pId) {
 const buyProduct = async(req, res) =>{
     let { pId , cant} = req.body;
     if (!pId) {
-        return res.json({ error: "All filled must be required" });
+        return res.json({ error: "Campo Requerido" });
     } else {
         try {
             let productBuy = await productModel.findById(pId);
-            productBuy.pQuantity -= cant;
-            await  productBuy.updateOne({pQuantity : productBuy.pQuantity})
-        } catch (error) {
             
+            if(productBuy.pQuantity < cant){
+                return res.json({ err: "No Hay suficiente stock"  , stock : productBuy.pQuantity});
+            }
+            productBuy.pQuantity += cant;
+            await  productBuy.updateOne({pQuantity : productBuy.pQuantity})      
+            return res.json({ success: "Compra correcta" });
+
+        } catch (error) {
+            console.log(error)
         }
     }
 }
